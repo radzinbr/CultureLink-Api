@@ -1,7 +1,7 @@
 import user from '../../models/Usermodel.js'
 
 
-const getUser = async (req, res) => {
+const GetUser = async (req, res) => {
     try {
         const userData = req.body
         const [rows] = await user.GetUserId (userData.id)
@@ -21,4 +21,4 @@ const getUser = async (req, res) => {
     }
 }
 
-export default getUser;
+export default GetUser;
