@@ -6,8 +6,18 @@ const GetUserId = async (id) => {
     )
 }
 
-const GetUpdate = async (id,Nome,Img,Senha) => {
-    return await db.query("UPDATE users SET Nome=?, Img =?,Senha = ? WHERE id = ?", [Nome,Img, Senha, id])
+const UserUpdate = async (user) => {
+    const { id, Nome , Img , Senha } = user
+    return await db.query("UPDATE users SET Nome=?, Img =?,Senha =? WHERE id = ?", [Nome,Img, Senha, id])
 }
 
-export default {GetUserId,GetUpdate}
+const Useradd = async (Nome,Img,Senha) => {
+
+    return await db.query("INSERT INTO users (Nome,Img,Senha) VALUES (?,?,?) ",[Nome,Img,Senha])
+}
+
+const Del = async (id) => {
+    return await db.query("DELETE FROM users WHERE id = ? ",[id])
+}
+
+export default {GetUserId,UserUpdate,Useradd,Del}

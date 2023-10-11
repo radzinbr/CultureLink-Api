@@ -3,7 +3,7 @@ import user from '../../models/Usermodel.js'
 const GetUpd = async (req, res) => {
     try {
         const userData = req.body
-        const [Result] = await user.GetUpdate(userData)
+        const [Result] = await user.UserUpdate(userData)
         if (Result.affectedRows === 1) [
             res.json({
                 success: "usuario atualizado com sucesso",
