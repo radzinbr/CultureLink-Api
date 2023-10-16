@@ -1,10 +1,10 @@
 import e from 'express'
 import user from '../../models/Usermodel.js'
 
-const GetAdd = async (req,res) => {
+const create = async (req,res) => {
     try{
         const userData = req.body
-        const [result] = await user.Useradd(userData.Nome,userData.Img,userData.Senha)
+        const [result] = await user.Useradd(userData.Nome,userData.Img,userData.Senha,userData.email)
         if(result.affectedRows === 1){
             res.json({
                 success:"usuario inserido com sucesso",
@@ -20,4 +20,4 @@ const GetAdd = async (req,res) => {
     }
 }
 
-export default GetAdd; 
+export default create; 
