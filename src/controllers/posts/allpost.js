@@ -1,13 +1,13 @@
-import user from '../../models/userModels.js'
+import Posts from '../../models/Postsmodel.js'
 
 
-const Listall = async (req, res) => {
+const allPost = async (req, res) => {
     try {
-        const userData = req.body
-        const [rows] = await user.Listall(userData)
+        const PostData = req.body
+        const [rows] = await Posts.PostAll(PostData)
     
             res.json({
-                success:"usuario encontrado com sucesso",
+                success:"posts encontrados com sucesso",
                 user:rows
             })
         }
@@ -17,4 +17,4 @@ catch (error) {
     res.status(500).json({ error: "erro no servidor" })
 }
 }
-export default Listall;
+export default allPost;

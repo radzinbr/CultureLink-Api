@@ -1,6 +1,7 @@
 import express from 'express'
 import { PORT } from './config.js';
 import userRouter from './routes/userRouter.js'
+import PostRouter from './routes/PostRouter.js'
 import bodyParser from 'body-parser';
 import cors from 'cors'
 
@@ -14,7 +15,8 @@ app.get('/',(req,res) => {
     res.json({mensage:"Api do CultureLink"})
 } )
 
-app.use('/user',userRouter)
+app.use('/users',userRouter)
+app.use('/posts',PostRouter)
 
 app.listen(PORT, () => {
     console.log(`servidor no ar na porta http://localhost:${PORT}`)

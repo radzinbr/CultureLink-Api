@@ -1,14 +1,17 @@
-const getPost = async (req, res) => {
+import Posts from '../../models/Postsmodel.js'
+
+
+const Getpost = async (req, res) => {
     try {
-        const PostData = req.body
-        const [rows] = await post.getPost(PostData.id)
+        const postData = req.body
+        const [rows] = await Posts.GetPost(postData.user_id)
         if(rows.length === 0){
             res.status(404).json({
-                error:`Post de id: ${PostData,id} não encontrado!`
+                error:`post id: ${postData.user_id} não encontrado!`
             })
         }else {
             res.json({
-                success:"Post encontrado com sucesso",
+                success:"post encontrado com sucesso",
                 user:rows[0]
             })
         }
@@ -17,3 +20,5 @@ const getPost = async (req, res) => {
         res.status(500).json({error:"erro no servidor"})
     }
 }
+
+export default Getpost;
