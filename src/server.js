@@ -1,22 +1,30 @@
 import express from 'express'
-import { PORT } from './config.js';
-import userRouter from './routes/userRouter.js'
-import PostRouter from './routes/PostRouter.js'
-import bodyParser from 'body-parser';
+import bodyParser from 'body-parser'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import userR from './routes/userRouter.js'
+import authR from './routes/authRouter.js'
+import postR from './routes/PostRouter.js'
+import {PORT} from './config.js' 
 
 const app = express();
 
-app.use(bodyParser.json())
-app.use(cors())
+var corsOptions = {
+    credentials: true,
+    origin: 'http://127.0.0.1:5173'
+}
 
+app.use(cors(corsOptions))
+app.use(bodyParser.json())
+app.use(cookieParser())
 
 app.get('/',(req,res) => {
     res.json({mensage:"Api do CultureLink"})
 } )
 
-app.use('/users',userRouter)
-app.use('/posts',PostRouter)
+app.use('/users', userR)
+app.use('/posts', postR)
+app.use('/auth', authR)
 
 app.listen(PORT, () => {
     console.log(`servidor no ar na porta http://localhost:${PORT}`)

@@ -6,6 +6,11 @@ const GetUserId = async (id) => {
     )
 }
 
+
+const getByEmail = async (email) => {
+    return await db.query("SELECT * FROM users Where email = ?;", [email])
+}
+
 const UserUpdate = async (user) => {
     const { id, Nome, email , Img , Senha } = user
     return await db.query("UPDATE users SET nome=?, email=?, img =?,senha =? WHERE id = ?", [Nome,email,Img, Senha, id])
@@ -25,4 +30,4 @@ const all = async (id) => {
      return await db.query('SELECT * FROM users ', [id]);
 
   }
-export default {GetUserId,UserUpdate,Useradd,Del,all}
+export default {GetUserId,getByEmail,UserUpdate,Useradd,Del,all}
