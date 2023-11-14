@@ -11,7 +11,7 @@ const allPost = async (req, res) => {
                 user:rows
             })
         }
-
+        
 catch (error) {
     console.log(error)
     res.status(500).json({ error: "erro no servidor" })
